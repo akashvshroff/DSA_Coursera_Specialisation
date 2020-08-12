@@ -43,14 +43,12 @@ def minimum_distance(points):
     if len(points) <= 3:
         return small_min(points)
     mid = len(points)//2
-    l_points = points[:mid]
-    r_points = points[mid:]
-
-    left_min = minimum_distance(l_points)
-    right_min = minimum_distance(r_points)
+    left_min = minimum_distance(points[:mid])
+    right_min = minimum_distance(points[mid:])
 
     cur_min = min(left_min, right_min)
-    mid_x = (l_points[-1][0] + r_points[0][0])/2
+    mid_x = (points[mid-1][0]+points[mid][0])/2
+
     rem_y = [p for p in points if abs(p[0]-mid_x) <= cur_min]
     if len(rem_y) > 1:
         cur_min = across_distance(rem_y, cur_min)
