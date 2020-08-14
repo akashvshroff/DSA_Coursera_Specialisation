@@ -1,4 +1,4 @@
-def make_change(amt, coins):
+def make_change(amt, coins=[1, 3, 4]):
     """
     Returns the optimal number of coins needed to make change using dynamic
     programming.
@@ -17,4 +17,6 @@ def make_change(amt, coins):
     return min_coins[amt]
 
 
-print(make_change(32, [1, 8, 20]))
+if __name__ == '__main__':
+    m = int(sys.stdin.read())
+    print(make_change(m))
