@@ -3,21 +3,18 @@ import sys
 
 
 def optimal_sequence(n):
-    sequence = []
-    while n >= 1:
-        sequence.append(n)
-        if n % 3 == 0:
-            n = n // 3
-        elif n % 2 == 0:
-            n = n // 2
-        else:
-            n = n - 1
-    return reversed(sequence)
+    num_ops = [[] for i in range(n+1)]
+    num_ops[1] = [1]
+    for i in range(2, n+1):
+        to_check = []
+        to_check += [num_ops[i - 1]]
+        to_check += [num_ops[i//2]] if not i % 2 else []
+        to_check += [num_ops[i//3]] if not i % 3 else []
+        num_ops[i] = min(to_check, key=len)+[i]
+    return num_ops[n]
 
 
 if __name__ == '__main__':
-    input = sys.stdin.read()
-    n = int(input)
     sequence = list(optimal_sequence(n))
     print(len(sequence) - 1)
     for x in sequence:
