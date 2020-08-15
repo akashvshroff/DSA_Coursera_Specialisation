@@ -38,5 +38,4 @@ def edit_distance(s, t):
 
 
 if __name__ == "__main__":
-    # print(edit_distance(input(), input()))
-    print(edit_distance('bread', 'really'))
+    print(edit_distance(input(), input()))
