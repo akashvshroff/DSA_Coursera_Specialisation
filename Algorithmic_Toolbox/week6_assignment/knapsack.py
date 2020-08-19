@@ -13,15 +13,15 @@ def optimal_weight(n, W, w):
     if not W or not n:
         return 0
     w.insert(0, 0)  # w runs from 1 to n to match with the dp table.
-    value = [[0 for y in range(n+1)] for x in range(W+1)]
+    value = [[0 for y in range(W+1)] for x in range(n+1)]
     for i in range(1, n+1):
         for weight in range(1, W+1):
-            value[weight][i] = value[weight][i-1]
+            value[i][weight] = value[i-1][weight]
             if w[i] <= weight:
-                val = value[weight-w[i]][i-1] + w[i]  # * Replace with v[i]
-                if value[weight][i] < val:
-                    value[weight][i] = val
-    return value[W][n]
+                val = value[i-1][weight-w[i]] + w[i]  # * Replace with v[i]
+                if value[i][weight] < val:
+                    value[i][weight] = val
+    return value[n][W]
 
 
 if __name__ == '__main__':
