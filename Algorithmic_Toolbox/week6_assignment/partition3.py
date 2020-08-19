@@ -41,6 +41,11 @@ def optimal_weight(W, w):
 
 
 def partition3(A, k=3):
+    """
+    A dynamic programming approach to the 3-partition problem where the 0/1
+    knapsack problem is used to determine whether an array of integers can be
+    split into 3 groups whose sum is equal.
+    """
     total = sum(A)
     if not A or not total or total % k:
         return 0
