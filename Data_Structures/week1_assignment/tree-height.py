@@ -28,17 +28,16 @@ def build_tree(n, node_data):
             root = child
         else:
             nodes[parent].children.append(nodes[child])
-    # print(nodes)
-    return find_height(root, nodes)
+    return 1 + find_height(nodes[root].children)
 
 
-def find_height(root, nodes):
+def find_height(tree):
     """
     Find the height of a given tree using recursion.
     """
-    if not nodes:
+    if not tree:
         return 0
-    return 1 + max(find_height(child, child.children) for child in nodes)
+    return 1 + max(find_height(child.children) for child in tree)
 
 
 def main():
