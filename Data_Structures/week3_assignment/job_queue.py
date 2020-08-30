@@ -1,31 +1,51 @@
 # python3
 
-from collections import namedtuple
 
-AssignedJob = namedtuple("AssignedJob", ["worker", "started_at"])
+def left_child(i): return i*2+1
+
+
+def right_child(i): return i*2+2
+
+
+def sift_down(arr, i, size):
+    """
+    Bubbles down a value in the min-heap if its child is smaller than it. Swaps
+    a parent node with the min of its child nodes and counts num swaps.
+    """
+    max_size = i
+    l = left_child(i)
+    r = right_child(i)
+    if l <= size and arr[l][1] < arr[max_size][1]:
+        max_size = l
+    if r <= size and arr[r][1] < arr[max_size][1]:
+        max_size = r
+    if i != max_size:
+        arr[i], arr[max_size] = arr[max_size], arr[i]
+        sift_down(arr, max_size, size)
+
+
+def change_priority(arr, i, p):
+    arr[i][1] += p
+    arr = sift_down(arr, i, len(arr)-1)
 
 
 def assign_jobs(n_workers, jobs):
-    # TODO: replace this code with a faster algorithm.
-    result = []
-    next_free_time = [0] * n_workers
+    min_heap = [[i, 0] for i in range(n_workers)]
+    workers = []
     for job in jobs:
-        next_worker = min(range(n_workers), key=lambda w: next_free_time[w])
-        result.append(AssignedJob(next_worker, next_free_time[next_worker]))
-        next_free_time[next_worker] += job
-
-    return result
+        workers.append(min_heap[0][::])
+        curr_worker = min_heap[0]
+        change_priority(min_heap, 0, job)
+    return workers
 
 
 def main():
     n_workers, n_jobs = map(int, input().split())
     jobs = list(map(int, input().split()))
     assert len(jobs) == n_jobs
-
-    assigned_jobs = assign_jobs(n_workers, jobs)
-
-    for job in assigned_jobs:
-        print(job.worker, job.started_at)
+    assigments = assign_jobs(n_workers, jobs)
+    for assigment in assigments:
+        print('{} {}'.format(*assigment))
 
 
 if __name__ == "__main__":
