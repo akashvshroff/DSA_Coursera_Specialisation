@@ -12,28 +12,28 @@ def sift_down(arr, i, size):
     Bubbles down a value in the min-heap if its child is smaller than it. Swaps
     a parent node with the min of its child nodes.
     """
-    max_size = i
+    min_size = i
     l = left_child(i)
     r = right_child(i)
     if l <= size:
         l_priority = arr[l][1]
-        cur_priority = arr[max_size][1]
+        cur_priority = arr[min_size][1]
         if l_priority < cur_priority:
-            max_size = l
+            min_size = l
         elif l_priority == cur_priority:
-            if arr[l][0] < arr[max_size][0]:
-                max_size = l
+            if arr[l][0] < arr[min_size][0]:
+                min_size = l
     if r <= size:
         r_priority = arr[r][1]
-        cur_priority = arr[max_size][1]
+        cur_priority = arr[min_size][1]
         if r_priority < cur_priority:
-            max_size = r
+            min_size = r
         elif r_priority == cur_priority:  # same priority
-            if arr[r][0] < arr[max_size][0]:  # lower index
-                max_size = r
-    if i != max_size:
-        arr[i], arr[max_size] = arr[max_size], arr[i]
-        sift_down(arr, max_size, size)
+            if arr[r][0] < arr[min_size][0]:  # lower index
+                min_size = r
+    if i != min_size:
+        arr[i], arr[min_size] = arr[min_size], arr[i]
+        sift_down(arr, min_size, size)
 
 
 def change_priority(arr, i, p):
