@@ -45,7 +45,7 @@ def hash_value(table, prime, x, start, length):
 
 def process_queries(s, queries):
     X, h1, h2, m1, m2 = pre_process_string(s)
-    print(h1, h2)
+    # print(h1, h2)
     res = []
     for a, b, l in queries:
         a_m1 = hash_value(h1, m1, X, a, l)
