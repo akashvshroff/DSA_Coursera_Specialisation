@@ -29,11 +29,11 @@ def precompute_hashes(T, len_p, P, X):
     """
     len_t = len(T)
     H = [0 for _ in range(len_t-len_p+1)]
-    S = T[len_t-len_p:len_t-1]
+    S = T[len_t-len_p:len_t]
     H[len_t-len_p] = poly_hash(S, P, X)
     y = pow(X, len_p, P)
     for i in range(len_t-len_p-1, -1, -1):
-        H[i] = (X * H[i+1] + ord(T[i]) - y * ord(T[i+len_p-1])) % P
+        H[i] = (X * H[i+1] + ord(T[i]) - y * ord(T[i+len_p])) % P
     return H
 
 
@@ -46,15 +46,15 @@ def rabin_karp(pattern, text):
     _multiplier = 263
     res = []
     p_hash = poly_hash(pattern, _prime, _multiplier)
-    print(p_hash)
+    # print(p_hash)
     len_p, len_t = len(pattern), len(text)
     H = precompute_hashes(text, len_p, _prime, _multiplier)
-    print(H)
+    # print(H)
     for i in range(len_t-len_p+1):
         # print(i)
         if p_hash != H[i]:
             continue
-        if text[i:i+len_p+1] == pattern:
+        if text[i:i+len_p] == pattern:
             res.append(i)
     return res
 
