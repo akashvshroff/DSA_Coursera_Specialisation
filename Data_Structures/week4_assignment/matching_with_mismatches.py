@@ -29,32 +29,30 @@ def pre_compute_hashes(s, M1, M2, X):
     return h1, h2
 
 
-def find_num_matches(p1, p2, t1, t2, m1, m2, x, k, len_p):
+def find_num_matches(p1, p2, t1, t2, m1, m2, x, k, len_p, i):
     """
     Uses binary search to find the number of mismatches. It finds the left-most
     mismatch and then looks at the substring hash after that index position and
-    continues until the number of mismatches are more than k or the low pointer
-    is more than or equal to high.
+    continues until the number of mismatches are more than k or the start pointer
+    is more than or equal to end.
     """
-
-    low = 0
-    id = 0
-    for test in range(k):
-        high = len(p)
-        num_mismatches = 0
-        while low <= high:
-            mid = (low+high)//2
-            print(low, high, mid, id)
+    start = 0
+    for mismatch in range(k):
+        # print(f'start: {start}, id: {id}')
+        id = start
+        end = len_p-1
+        while start <= end:
+            mid = start + (end-start)//2
             p_h1, p_h2 = get_hash_value(
-                p1, m1, x, id, mid-id), get_hash_value(p2, m2, x, id, mid-id)
+                p1, m1, x, id, mid-start), get_hash_value(p2, m2, x, id, mid-start)
             s_h1, s_h2 = get_hash_value(
-                t1, m1, x, id, mid-id), get_hash_value(t2, m2, x, id, mid-id)
+                t1, m1, x, i+id, mid-start), get_hash_value(t2, m2, x, i+id, mid-start)
             if p_h1 == s_h1 and p_h2 == s_h2:  # move to the right half, no mismatch yet
-                low = mid+1
-            else:  # there's a mimatch earlier
-                high = mid-1
-        id = low  # index position of the first mismatch
-        if low == len(p):
+                start = mid + 1
+            else:
+                end = mid - 1
+        # when loop exits, start - 1 is the index of the mismatch.
+        if start == len_p:  # found the last mismatch
             return True
     return False
 
@@ -65,7 +63,7 @@ def solve(k, text, pattern):
     at most k mismatches. Returns the start index of occurence as well as the
     number of mismatches.
     """
-    print(k, text, pattern)
+    # print(k, text, pattern)
     base = pow(10, 9)
     M1 = base + 7
     M2 = base + 9
@@ -83,7 +81,7 @@ def solve(k, text, pattern):
         if p_hash1 == subs_hash1 and p_hash2 == subs_hash2:
             res.append(i)
         else:
-            is_valid = find_num_matches(pattern1, pattern2, text1, text2, M1, M2, X, k, len_p)
+            is_valid = find_num_matches(pattern1, pattern2, text1, text2, M1, M2, X, k, len_p, i)
             if is_valid:
                 res.append(i)
     return res
