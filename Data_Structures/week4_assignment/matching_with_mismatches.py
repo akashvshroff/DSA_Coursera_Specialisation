@@ -78,12 +78,9 @@ def solve(k, text, pattern):
     for i in range(len_t-len_p+1):  # all possible candidates
         subs_hash1 = get_hash_value(text1, M1, X, i, len_p)
         subs_hash2 = get_hash_value(text2, M2, X, i, len_p)
-        if p_hash1 == subs_hash1 and p_hash2 == subs_hash2:
+        is_valid = find_num_matches(pattern1, pattern2, text1, text2, M1, M2, X, k, len_p, i)
+        if is_valid:
             res.append(i)
-        else:
-            is_valid = find_num_matches(pattern1, pattern2, text1, text2, M1, M2, X, k, len_p, i)
-            if is_valid:
-                res.append(i)
     return res
 
 
