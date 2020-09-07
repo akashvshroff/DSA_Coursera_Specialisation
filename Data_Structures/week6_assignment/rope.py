@@ -1,19 +1,5 @@
-"""
-Good job! (Max time used: 0.59/3.00, max memory used: 17231872/536870912.)
-
-Whew! That was one hell of a challenge. My recommendations to people who are stuck:
-
--Reuse the splay tree from set_range_size. Replace int key with char key, long long size with size.
-
--Change update to update the size instead of size (node size is 1 + left size + right size)
-
--Change find() to orderstatistic function shown in the videos, I used an iterative version
-
--Write a function to give in order traversal of your splay tree
-
--In your process function split from right to left, as suggested by other users. Meaning: split at j + 1, then at i. Merge from left to right. My process used three splits and three merges
-"""
-
+import sys
+sys.setrecursionlimit(2**27)
 root = None
 
 
@@ -103,7 +89,7 @@ def find_order_statistic(node, k):
     if not node:
         return None
     if not node.left:
-        s = -1
+        s = 0
     else:
         s = node.left.size
     if k == s+1:
@@ -165,27 +151,35 @@ def make_tree(s):
     """
     global root
     for id, char in enumerate(s):
-        new_vertex = Vertex(id, char, 0, None, None, None)
+        new_vertex = Vertex(id, char, 1, None, None, None)
         root = merge(root, new_vertex)
+
+
+def show_node(node):
+    """
+    Outputting tool to show the string stored in a tree.
+    """
+    print(''.join(in_order_traversal(root, res=[])))
 
 
 def process_queries(qs):
     """
-    Process the given queries and then print the in-order traversal.
+    Processes the queries and string slices that have to occur and outputs the
+    final solution.
     """
     global root
     for i, j, k in qs:
+        i, j, k = i+1, j+1, k+1
         useful, rem = split(root, j+1)
-        prefix, to_use = split(useful, i)
-        root = merge(prefix, rem)
+        pre, to_use = split(useful, i)
+        root = merge(pre, rem)
         prefix, suffix = split(root, k)
         root = merge(merge(prefix, to_use), suffix)
-    res = in_order_traversal(root, [])
-    print(''.join(res))
+    show_node(root)
 
 
 if __name__ == '__main__':
-    s = input()
+    s = input().strip()
     n = int(input())
     qs = []
     for _ in range(n):
