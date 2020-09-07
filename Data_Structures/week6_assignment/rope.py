@@ -1,5 +1,8 @@
 import sys
-sys.setrecursionlimit(2**27)
+import threading
+
+sys.setrecursionlimit(2*10**9)  # max depth of recursion
+threading.stack_size(2**27)  # new thread will get stack of such size
 root = None
 
 
@@ -145,14 +148,22 @@ def in_order_traversal(root, res=[]):
     return res
 
 
-def make_tree(s):
+def make_tree():
     """
     Create a tree using the characters of a string.
     """
+    s = input().strip()
+    n = int(input())
+    qs = []
+    for _ in range(n):
+        qs.append(list(map(int, input().split())))
     global root
     for id, char in enumerate(s):
         new_vertex = Vertex(id, char, 1, None, None, None)
         root = merge(root, new_vertex)
+    for i, j, k in qs:
+        process_queries(i, j, k)
+    show_node(root)
 
 
 def show_node(node):
@@ -162,27 +173,18 @@ def show_node(node):
     print(''.join(in_order_traversal(root, res=[])))
 
 
-def process_queries(qs):
+def process_queries(i, j, k):
     """
     Processes the queries and string slices that have to occur and outputs the
     final solution.
     """
     global root
-    for i, j, k in qs:
-        i, j, k = i+1, j+1, k+1
-        useful, rem = split(root, j+1)
-        pre, to_use = split(useful, i)
-        root = merge(pre, rem)
-        prefix, suffix = split(root, k)
-        root = merge(merge(prefix, to_use), suffix)
-    show_node(root)
+    i, j, k = i+1, j+1, k+1
+    useful, rem = split(root, j+1)
+    pre, to_use = split(useful, i)
+    root = merge(pre, rem)
+    prefix, suffix = split(root, k)
+    root = merge(merge(prefix, to_use), suffix)
 
 
-if __name__ == '__main__':
-    s = input().strip()
-    n = int(input())
-    qs = []
-    for _ in range(n):
-        qs.append(list(map(int, input().split())))
-    make_tree(s)
-    process_queries(qs)
+threading.Thread(target=make_tree).start()
