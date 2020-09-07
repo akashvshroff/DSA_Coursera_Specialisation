@@ -1,31 +1,25 @@
-# python3
-
 import sys
 
 
-def solve_naive(string, slices):
-    """
-    Naive solution to a problem outlining the implementation of a rope data
-    structure which facilitates easy slicing and merging.
-    """
-    for i, j, k in slices:
-        chars = string[i:j+1]
-        string = string[:i] + string[j+1:]
-        # print(string, chars)
-        if len(string) == k:
-            string += chars
-            continue
-        for m in range(len(string)):
-            if m == k:
-                string = string[:m] + chars + string[m:]
-                break
-    return ''.join(string)
+class Rope:
+    def __init__(self, s):
+        self.s = s
+
+    def result(self):
+        return self.s
+
+    def process(self, i, j, k):
+        substring = self.s[i:j + 1]
+        self.s = self.s[:i] + self.s[j + 1:]
+        if k == 0:
+            self.s = substring + self.s
+        else:
+            self.s = self.s[:k] + substring + self.s[k:]
 
 
-if __name__ == '__main__':
-    s = list(input().strip())
-    n = int(input())
-    queries = []
-    for query in range(n):
-        queries.append(list(map(int, input().split())))
-    print(solve_naive(s, queries))
+rope = Rope(sys.stdin.readline().strip())
+q = int(sys.stdin.readline())
+for _ in range(q):
+    i, j, k = map(int, sys.stdin.readline().strip().split())
+    rope.process(i, j, k)
+print(rope.result())
