@@ -103,11 +103,31 @@ def find_order_statistic(node, k):
         return find_order_statistic(node.right, k-s-1)
 
 
+def find_order_iterative(node, k):
+    """
+    Iterative implementation of the find order method.
+    """
+    while True:
+        if not node:
+            return None
+        if not node.left:
+            s = 0
+        else:
+            s = node.left.size
+        if k == s+1:
+            return node
+        elif k < s+1:
+            node = node.left
+        else:
+            node = node.right
+            k = k - s - 1
+
+
 def split(root, k):
     """
     Split a tree based on the kth smallest element.
     """
-    split_node = find_order_statistic(root, k)
+    split_node = find_order_iterative(root, k)
     if split_node is None:
         return (root, None)
     right = splay(split_node)
@@ -148,16 +168,37 @@ def in_order_traversal(root, res=[]):
     return res
 
 
+def in_order_iterative(root):
+    """
+    Iterative solution to the in-order traversal to prevent stackoverflow in
+    situations where the string is long.
+    """
+    cur = root
+    stack = []
+    chars = []
+    while True:
+        if cur is not None:
+            stack.append(cur)
+            cur = cur.left
+        elif(stack):
+            cur = stack.pop()
+            chars.append(cur.char)
+            cur = cur.right
+        else:
+            break
+    return chars
+
+
 def make_tree():
     """
     Create a tree using the characters of a string.
     """
-    s = input().strip()
-    n = int(input())
+    global root
+    s = sys.stdin.readline().strip()
+    n = int(sys.stdin.readline())
     qs = []
     for _ in range(n):
-        qs.append(list(map(int, input().split())))
-    global root
+        qs.append(list(map(int, sys.stdin.readline().split())))
     for id, char in enumerate(s):
         new_vertex = Vertex(id, char, 1, None, None, None)
         root = merge(root, new_vertex)
@@ -170,7 +211,7 @@ def show_node(node):
     """
     Outputting tool to show the string stored in a tree.
     """
-    print(''.join(in_order_traversal(root, res=[])))
+    print(''.join(in_order_iterative(root)))
 
 
 def process_queries(i, j, k):
