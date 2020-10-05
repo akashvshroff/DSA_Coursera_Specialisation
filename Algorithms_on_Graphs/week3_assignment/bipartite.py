@@ -1,11 +1,26 @@
-#Uses python3
+# Uses python3
 
 import sys
 import queue
 
-def bipartite(adj):
-    #write your code here
-    return -1
+
+def bipartite(adj, n):
+    bi = [None for _ in range(n)]
+    bi[0] = True
+    q = queue.Queue()
+    q.put(0)
+    while not q.empty():
+        u = q.get()
+        cur = bi[u]
+        for v in adj[u]:
+            if bi[v] is None:  # unvisited
+                q.put(v)
+                bi[v] = not cur
+            else:  # visited
+                if bi[v] == cur:  # not bipartite
+                    return 0
+    return 1
+
 
 if __name__ == '__main__':
     input = sys.stdin.read()
@@ -17,4 +32,4 @@ if __name__ == '__main__':
     for (a, b) in edges:
         adj[a - 1].append(b - 1)
         adj[b - 1].append(a - 1)
-    print(bipartite(adj))
+    print(bipartite(adj, n))
