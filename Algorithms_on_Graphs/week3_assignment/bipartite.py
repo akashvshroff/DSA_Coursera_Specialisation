@@ -4,21 +4,32 @@ import sys
 import queue
 
 
-def bipartite(adj, n):
-    bi = [None for _ in range(n)]
-    bi[0] = True
+def bipart(adj, s, visited, bi):
+    visited[s] = True
+    bi[s] = True
     q = queue.Queue()
-    q.put(0)
+    q.put(s)
     while not q.empty():
         u = q.get()
         cur = bi[u]
         for v in adj[u]:
+            visited[v] = True
             if bi[v] is None:  # unvisited
                 q.put(v)
                 bi[v] = not cur
             else:  # visited
                 if bi[v] == cur:  # not bipartite
-                    return 0
+                    return False
+    return True
+
+
+def bipartite(adj, n):
+    visited = [False for _ in range(n)]
+    bi = [None for _ in range(n)]
+    for vertex in range(n):
+        if not visited[vertex]:
+            if not bipart(adj, vertex, visited, bi):
+                return 0
     return 1
 
 
