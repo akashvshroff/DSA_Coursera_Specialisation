@@ -1,12 +1,73 @@
-#Uses python3
+# Uses python3
 
 import sys
 import queue
 
 
-def shortet_paths(adj, cost, s, distance, reachable, shortest):
-    #write your code here
-    pass
+def bfs(adj, s, n):
+    """
+    Return all nodes from a node if unreachable
+    """
+    dist = [None for i in range(n)]
+    dist[s] = 0
+    q = queue.Queue(maxsize=n)
+    q.put(s)
+    while not q.empty():
+        u = q.get()
+        for v in adj[u]:
+            if dist[v] is None:
+                q.put(v)
+                dist[v] = dist[u] + 1
+    reach = [1 if dist[i] is not None else 0 for i in range(n)]
+    return reach
+
+
+def relax(u, v, distance, cost):
+    """
+    Relaxes an edge if its distance can be minimized, returns True and False
+    """
+    if distance[v] > distance[u] + cost:
+        distance[v] = distance[u] + cost
+        return True
+    return False
+
+
+def bellman_ford(adj, cost, s, distance, shortest, n):
+    """
+    Runs the Bellman Ford algorithm on a set of vertices to find the shortest
+    path from some start vertex to the remaining vertices. If there is a
+    negative edge cycle, then the verteices reachable from the cycle are
+    removed.
+    """
+    distance[s] = 0
+    for iteration in range(n-1):
+        for u in range(n):
+            for id, v in enumerate(adj[u]):
+                relax(u, v, distance, cost[u][id])
+    # nth iteration to check for negative cycle
+    negative = []  # nodes that can be reached from negative cycle
+    for u in range(n):
+        for id, v in enumerate(adj[u]):
+            if relax(u, v, distance, cost[u][id]):
+                negative.append(v)
+                shortest[v] = 0
+    return negative
+
+
+def optimal_currency(adj, cost, s, distance, reachable, shortest, n):
+    """
+    Calculates optimal way of exchanging currency between a start currency and
+    a set of given currencies.
+    """
+    reachable = bfs(adj, s, n)
+    negative = bellman_ford(adj, cost, s, distance, shortest, n)
+    for node in negative:
+        if shortest[node]:
+            reached_nodes = bfs(adj, node, n)
+            for id, node in enumerate(reached_nodes):
+                if node == 1:
+                    shortest[id] = 0
+    return distance, reachable, shortest
 
 
 if __name__ == '__main__':
@@ -26,7 +87,7 @@ if __name__ == '__main__':
     distance = [10**19] * n
     reachable = [0] * n
     shortest = [1] * n
-    shortet_paths(adj, cost, s, distance, reachable, shortest)
+    distance, reachable, shortest = optimal_currency(adj, cost, s, distance, reachable, shortest, n)
     for x in range(n):
         if reachable[x] == 0:
             print('*')
@@ -34,4 +95,3 @@ if __name__ == '__main__':
             print('-')
         else:
             print(distance[x])
-
