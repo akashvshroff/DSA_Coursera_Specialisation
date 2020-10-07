@@ -50,7 +50,6 @@ def bellman_ford(adj, cost, s, distance, shortest, n):
         for id, v in enumerate(adj[u]):
             if relax(u, v, distance, cost[u][id]):
                 negative.append(v)
-                shortest[v] = 0
     return negative
 
 
@@ -84,7 +83,7 @@ if __name__ == '__main__':
         cost[a - 1].append(w)
     s = data[0]
     s -= 1
-    distance = [10**19] * n
+    distance = [float('inf')] * n
     reachable = [0] * n
     shortest = [1] * n
     distance, reachable, shortest = optimal_currency(adj, cost, s, distance, reachable, shortest, n)
