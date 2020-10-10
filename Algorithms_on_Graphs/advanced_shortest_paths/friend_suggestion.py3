@@ -7,7 +7,7 @@ import heapq
 class BiDij:
     def __init__(self, n):
         self.n = n   # Number of nodes
-        self.inf = 2*10**8  # All distances in the graph are smaller
+        self.inf = n*10**6  # All distances in the graph are smaller
         # Initialize distances for forward and backward searches
         # visited[v] == True iff v was visited by forward or backward search
         self.workset = set()  # Nodes visited by forward or backward search
@@ -37,8 +37,6 @@ class BiDij:
         Retrieve the shortest distance from s to t by finding the
         best middle node.
         """
-        if not self.workset:
-            return -1
         try:
             distance = self.dist[v] + self.dist_r[v]
         except KeyError:
@@ -46,7 +44,7 @@ class BiDij:
         for vertex in self.workset:
             if self.dist.get(vertex, self.inf) + self.dist_r.get(vertex, self.inf) < distance:
                 distance = self.dist[vertex] + self.dist_r[vertex]
-        return distance if distance != self.inf else -1
+        return distance
 
     def process(self, q, v, vs, weights, dist):
         """
