@@ -42,8 +42,10 @@ class BiDij:
         except KeyError:
             return -1
         for vertex in self.workset:
-            if self.dist.get(vertex, self.inf) + self.dist_r.get(vertex, self.inf) < distance:
-                distance = self.dist[vertex] + self.dist_r[vertex]
+            dst = self.dist.get(vertex, self.inf) + \
+                self.dist_r.get(vertex, self.inf)
+            if dst < distance:
+                distance = dst
         return distance
 
     def process(self, q, v, vs, weights, dist):
