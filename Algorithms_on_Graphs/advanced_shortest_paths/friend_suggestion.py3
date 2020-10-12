@@ -52,25 +52,17 @@ class BiDij:
         """
         Process a node and relax all the edges adjoining the node.
         """
-        # print(f'pre dist: {dist}')
-        # print(f'pre heap: {q}')
         for id, u in enumerate(vs):
-            # print(f'u: {u}')
             if dist.get(u, self.inf) > dist.get(v, self.inf) + weights[id]:
                 dist[u] = dist.get(v, self.inf) + weights[id]
                 heapq.heappush(q, (dist[u], u))
             self.workset.add(u)
-        # print(f'post dist: {dist}')
-        # print(f'post heap: {q}')
 
     def query(self, adj, cost, s, t):
         """
         Driver function that uses the bidirectional dijkstra function to find
         the shortest distance from s to t.
         """
-        # print('****')
-        # print(f's: {s}, t: {t}')
-        # print(f'proc: {self.proc}, proc_r: {self.proc_r}')
         if s == t:
             return 0
         self.clear()
@@ -81,29 +73,21 @@ class BiDij:
         heapq.heapify(self.q)
         heapq.heapify(self.q_r)
         while self.q and self.q_r:
-            # print('forward')
-            # print(f'self.q: {self.q}')
             v = heapq.heappop(self.q)
-            # print(f'v: {v}')
             v_d, v_id = v
             if not self.proc.get(v_id, False):
                 self.process(self.q, v_id, adj[0][v_id],
                              cost[0][v_id], self.dist)
                 self.proc[v_id] = True
             if self.proc_r.get(v_id, False):
-                # print('processed in forward')
                 return self.shortest_distance(v_id)
-            # print('reverse')
-            # print(f'self.q_r: {self.q_r}')
             v_r = heapq.heappop(self.q_r)
-            # print(f'self.v_r: {v_r}')
             vr_d, vr_id = v_r
             if not self.proc_r.get(vr_id, False):
                 self.process(self.q_r, vr_id, adj[1][vr_id],
                              cost[1][vr_id], self.dist_r)
                 self.proc_r[vr_id] = True
             if self.proc.get(vr_id, False):
-                # print('processed in rev')
                 return self.shortest_distance(vr_id)
         return -1
 
