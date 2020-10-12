@@ -76,8 +76,8 @@ class BiDij:
         self.clear()
         self.dist[s] = 0
         self.dist_r[t] = 0
-        self.q = [(self.inf, i) if i != s else (0, i) for i in range(self.n)]
-        self.q_r = [(self.inf, j) if j != t else (0, t) for j in range(self.n)]
+        self.q = [(0, s)]
+        self.q_r = [(0, t)]
         heapq.heapify(self.q)
         heapq.heapify(self.q_r)
         while self.q and self.q_r:
