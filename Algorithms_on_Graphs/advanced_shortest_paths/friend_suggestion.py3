@@ -50,7 +50,7 @@ class BiDij:
 
     def process(self, q, v, vs, weights, dist):
         """
-        Try to relax the distance to node v from direction side by value dist.
+        Process a node and relax all the edges adjoining the node.
         """
         # print(f'pre dist: {dist}')
         # print(f'pre heap: {q}')
