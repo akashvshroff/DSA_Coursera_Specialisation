@@ -61,9 +61,11 @@ class AStar:
         while q:
             v_obj = heapq.heappop(q)
             v_dist, v = v_obj
+            if v == t:
+                return self.d.get(t, -1)
             if not self.visited.get(v, False):
                 self.process(q, v, self.x[s], self.y[s])
-        return self.d.get(t, -1)
+        return -1
 
 
 def readl():
