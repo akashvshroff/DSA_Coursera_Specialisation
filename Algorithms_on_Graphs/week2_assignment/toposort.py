@@ -38,7 +38,8 @@ class TopoSort:
         Returns nodes in a linear, topological ordering.
         """
         self.dfs()
-        nodes_sorted = sorted(range(1, n+1), key=lambda x: self.postvisit[x-1], reverse=True)
+        nodes_sorted = sorted(range(1, n + 1),
+                              key=lambda x: self.postvisit[x-1], reverse=True)
         return map(str, nodes_sorted)
 
 
