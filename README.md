@@ -51,10 +51,10 @@
     - Longest Common Subsequence of Two Sequences
         - [Iterative](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithmic_Toolbox/week5_assignment/lcs2.py)
         - [Recursive](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithmic_Toolbox/week5_assignment/lcs2_recursive.py)
-    - [Longest Common Subsequence of Three Sequences]((https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithmic_Toolbox/week5_assignment/lcs3.py))
+    - [Longest Common Subsequence of Three Sequences](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithmic_Toolbox/week5_assignment/lcs3.py)
 6. Week 6 - Dynamic Programming Continued:
     - [Discrete Knapsack (without repetitions)](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithmic_Toolbox/week6_assignment/knapsack.py)
     - [Partitions Into Equal-Sum Buckets](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithmic_Toolbox/week6_assignment/partition_backtracking.py)
     - [Placing Parentheses](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithmic_Toolbox/week6_assignment/placing_parentheses.py)
-    
+
 ---
