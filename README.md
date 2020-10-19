@@ -11,7 +11,6 @@
 - Use the links below to access any program - each program contains documentation about what the problem entails and I've included a few descriptive words below as well.
 
 ## Courses
----
 ### 1. Algorithmic Toolbox
 1. Programming Challenges:
     - [Max Pairwise](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithmic_Toolbox/week1_assigment/max_pairwise.py)
@@ -94,7 +93,7 @@
     - [Connected Components](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week1_assignment/connected_components.py)
 2. Decomposition Of Graphs - 2:
     - [Detect Cycles](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week2_assignment/acyclicity.py)
-    - [Linear Ordering/Topological Sorting](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week2_assignment/toposort.py)
+    - [Topological Sorting (Linear Ordering)](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week2_assignment/toposort.py)
     - [Strongly Connected Components](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week2_assignment/strongly_connected.py)
 3. Paths In Graphs - 1:
     - [Breadth First Search](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week3_assignment/bfs.py)
