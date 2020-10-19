@@ -89,3 +89,26 @@
 
 ---
 ### 3. Algorithms On Graphs
+1. Decomposition Of Graphs - 1:
+    - [Graph Reachability](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week1_assignment/reachability.py)
+    - [Connected Components](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week1_assignment/connected_components.py)
+2. Decomposition Of Graphs - 2:
+    - [Detect Cycles](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week2_assignment/acyclicity.py)
+    - [Linear Ordering/Topological Sorting](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week2_assignment/toposort.py)
+    - [Strongly Connected Components](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week2_assignment/strongly_connected.py)
+3. Paths In Graphs - 1:
+    - [Breadth First Search](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week3_assignment/bfs.py)
+    - [Detect Bipartite](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week3_assignment/bipartite.py)
+4. Paths In Graphs - 2:
+    - [Dijkstra's Algorithm](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week4_assignment/dijkstra.py)
+    - [Detect Negative Cycle](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week4_assignment/negative_cycle.py)
+    - [Infinite Arbitage - Bellman-Ford's Algorithm](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week4_assignment/shortest_paths.py)
+5. Minimum Spanning Trees:
+    - [Connecting Points - Prim's Algorithm](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week5_assignment/connecting_points.py)
+    - [Clustering - Kruskal's Algorithm](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week5_assignment/clustering.py)
+6. Advanced Shortest Paths:
+    - [Bidirectional Dijkstra's Algorithm](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/advanced_shortest_paths/bi_dijkstra.py3)
+    - [A* Algorithm - Directed Dijkstra](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/advanced_shortest_paths/a_star.py3)
+    - [Bidirectional A* Algorithm](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/advanced_shortest_paths/bi_astar.py3)
+
+---
