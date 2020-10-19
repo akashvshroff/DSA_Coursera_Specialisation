@@ -39,7 +39,7 @@
     - [Majority Element](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithmic_Toolbox/week4_assignment/majority_element.py)
     - [Merge Sort](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithmic_Toolbox/week4_assignment/merge_sort.py)
     - [Quick Sort](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithmic_Toolbox/week4_assignment/quick_sort.py)
-    - [Improved Quick Sort - Dutch Partition](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithmic_Toolbox/week4_assignment/improved_quicksort.py)
+    - [Improved Quick Sort (Dutch Partition)](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithmic_Toolbox/week4_assignment/improved_quicksort.py)
     - [Karatsuba Multiplication](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithmic_Toolbox/week4_assignment/karatsuba_multiplication.py)
     - [Inversions](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithmic_Toolbox/week4_assignment/inversions.py)
     - [Points and Segments](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithmic_Toolbox/week4_assignment/points_and_segments.py)
@@ -102,13 +102,13 @@
 4. Paths In Graphs - 2:
     - [Dijkstra's Algorithm](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week4_assignment/dijkstra.py)
     - [Detect Negative Cycle](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week4_assignment/negative_cycle.py)
-    - [Infinite Arbitage - Bellman-Ford's Algorithm](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week4_assignment/shortest_paths.py)
+    - [Infinite Arbitage (Bellman-Ford's Algorithm)](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week4_assignment/shortest_paths.py)
 5. Minimum Spanning Trees:
-    - [Connecting Points - Prim's Algorithm](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week5_assignment/connecting_points.py)
-    - [Clustering - Kruskal's Algorithm](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week5_assignment/clustering.py)
+    - [Connecting Points (Prim's Algorithm)](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week5_assignment/connecting_points.py)
+    - [Clustering (Kruskal's Algorithm)](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/week5_assignment/clustering.py)
 6. Advanced Shortest Paths:
     - [Bidirectional Dijkstra's Algorithm](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/advanced_shortest_paths/bi_dijkstra.py3)
-    - [A* Algorithm - Directed Dijkstra](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/advanced_shortest_paths/a_star.py3)
+    - [A* Algorithm (Directed Dijkstra)](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/advanced_shortest_paths/a_star.py3)
     - [Bidirectional A* Algorithm](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/advanced_shortest_paths/bi_astar.py3)
 
 ---
