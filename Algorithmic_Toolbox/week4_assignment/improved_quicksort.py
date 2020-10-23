@@ -1,6 +1,5 @@
 # Uses python3
 import sys
-import random
 
 
 def quick_sort(A, l, r):
