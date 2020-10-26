@@ -1,26 +1,79 @@
 # python3
 import sys
 
-NA = -1
 
 class Node:
-	def __init__ (self):
-		self.next = [NA] * 4
-		self.patternEnd = False
+    def __init__(self):
+        """
+        Node for the trie class.
+        """
+        self.children = {}
+        self.is_complete = False  # flag for if the word ends here
 
-def solve (text, n, patterns):
-	result = []
 
-	// write your code here
+class Trie:
+    def __init__(self):
+        self.root = Node()
 
-	return result
+    def add(self, word):
+        """
+        Add a word to the try
+        """
+        cur = self.root
+        for id, letter in enumerate(word):
+            if letter in cur.children:
+                cur = cur.children[letter]
+            else:
+                cur.children[letter] = Node()
+                cur = cur.children[letter]
+            if id == len(word)-1:
+                cur.is_complete = True
 
-text = sys.stdin.readline ().strip ()
-n = int (sys.stdin.readline ().strip ())
+
+def trie_construction(patterns):
+    """
+    Driver program to create a trie from a set of patterns.
+    """
+    trie = Trie()
+    for pattern in patterns:
+        trie.add(pattern)
+    return trie
+
+
+def prefix_matching(text, trie):
+    """
+    Find starting index of all matches of a pattern in a text.
+    """
+    cur = trie.root
+    for letter in text:
+        if not cur.children or cur.is_complete:
+            return True
+        if letter in cur.children:
+            cur = cur.children[letter]
+            if not cur.children or cur.is_complete:
+                return True
+        else:
+            return False
+
+
+def solve(text, n, patterns):
+    result = []
+
+    trie = trie_construction(patterns)
+
+    for i in range(len(text)):
+        if prefix_matching(text[i:], trie):
+            result.append(i)
+
+    return result
+
+
+text = sys.stdin.readline().strip()
+n = int(sys.stdin.readline().strip())
 patterns = []
-for i in range (n):
-	patterns += [sys.stdin.readline ().strip ()]
+for i in range(n):
+    patterns += [sys.stdin.readline().strip()]
 
-ans = solve (text, n, patterns)
+ans = solve(text, n, patterns)
 
-sys.stdout.write (' '.join (map (str, ans)) + '\n')
+sys.stdout.write(' '.join(map(str, ans)) + '\n')
