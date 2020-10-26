@@ -2,24 +2,38 @@
 import sys
 
 
+class Node:
+    def __init__(self):
+        """
+        Node for the trie class.
+        """
+        self.children = {}
+
+
+class Trie:
+    def __init__(self):
+        self.root = Node()
+
+    def add(self, word):
+        """
+        Add a word to the try
+        """
+        cur = self.root
+        for letter in word:
+            if letter in cur.children:
+                cur = cur.children[letter]
+            else:
+                cur.children[letter] = Node()
+                cur = cur.children[letter]
+
+
 def trie_construction(patterns):
     """
     Driver program to create a trie from a set of patterns.
     """
-    if not patterns:
-        return {}
-    trie = {0: {}}
-    max_key = 1
+    trie = Trie()
     for pattern in patterns:
-        cur = trie[0]
-        for letter in pattern:
-            if letter in cur:  # match found
-                cur = trie[cur[letter]]
-            else:
-                cur[letter] = max_key
-                trie[max_key] = {}
-                cur = trie[max_key]
-                max_key += 1
+        trie.add(pattern)
     return trie
 
 
@@ -27,12 +41,13 @@ def prefix_matching(text, trie):
     """
     Find starting index of all matches of a pattern in a text.
     """
-    v = 0
-    for i in range(len(text)):
-        symbol = text[i]
-        if symbol in trie[v]:
-            v = trie[v][symbol]
-            if v not in trie or not trie[v]:
+    cur = trie.root
+    for letter in text:
+        if not cur.children:
+            return True
+        if letter in cur.children:
+            cur = cur.children[letter]
+            if not cur.children:
                 return True
         else:
             return False
