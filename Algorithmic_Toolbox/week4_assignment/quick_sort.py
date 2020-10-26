@@ -1,10 +1,7 @@
 def quick_sort(arr):
     """
-    A more memory efficient technique of comparison based sorting where a random
-    pivot is chosen and the rest of elements are partitioned into 2 groups that
-    are less than or equal to the pivot and greater than the pivot. At each
-    partition, the pivot is placed in its final position and this step is
-    recursively called for each partitioned portion.
+    A less memory efficient version of quicksort where three lists 
+    are made based on partition via a pivot and this process recursively continues.
     """
     less, same, more = [], [], []  # 3 partition lists
     if len(arr) <= 1:
