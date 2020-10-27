@@ -35,18 +35,17 @@ class Trie:
                     k = j + 1
                     while k - j < len(label) and word[k] == label[k - j]:
                         k += 1
-                    # scenario 2 since label is exhausted.
-                    if k - j == len(label):
+                    if k - j == len(label):  # label is exhausted, so move to next one
                         cur = child
                         j = k
-                    else:  # scenario 3
+                    else:  # either split a node or add prefix
                         c_exist, c_new = label[k - j], word[k]
                         mid = Node(label[:k - j])
                         mid.children[c_new] = Node(word[k:])
                         child.label = label[k - j:]
                         mid.children[c_exist] = child
                         cur.children[word[j]] = mid
-                else:  # scenario 1
+                else:  # scenario 1 -> create new node
                     cur.children[word[j]] = Node(word[j:])
 
 
