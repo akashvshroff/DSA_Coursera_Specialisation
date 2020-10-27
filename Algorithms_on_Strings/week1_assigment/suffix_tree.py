@@ -8,7 +8,6 @@ class Node:
         Node for the trie class.
         """
         self.children = {}
-        self.is_complete = False  # flag for if the word ends here
         self.label = label  # label leading up to this node
 
 
@@ -20,7 +19,7 @@ class Trie:
 
     def add(self, word):
         """
-        Add a word to the trie, compressing it. There are 3 scenarios:
+        Add all suffixes to the trie, compressing it. There are 3 scenarios:
         1. Inserting a new word into the trie, could be at root or at any internal
         node.
         2. Adding a prefix to an existing node.
@@ -64,9 +63,9 @@ def show_trie(root):
 
 def build_suffix_tree(text):
     """
-    Build a suffix tree of the string text and return a list
-    with all of the labels of its edges (the corresponding 
-    substrings of the text) in any order.
+    Build a suffix tree of the string text and show all
+    of the labels of its edges (the corresponding substrings
+    of the text) in any order.
     """
     trie = Trie(text)
     show_trie(trie.root)
