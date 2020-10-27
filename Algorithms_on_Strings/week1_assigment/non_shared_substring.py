@@ -102,7 +102,7 @@ class SuffixTree:
 
 
 def solve(p, q):
-    text = f'{p}#{q}$'
+    text = p + '#' + q + '$'
     tree = SuffixTree(text)
     return tree.shortest_uncommon_string()
 
