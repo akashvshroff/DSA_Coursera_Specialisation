@@ -64,8 +64,7 @@ def show_trie(root):
 def build_suffix_tree(text):
     """
     Build a suffix tree of the string text and show all
-    of the labels of its edges (the corresponding substrings
-    of the text) in any order.
+    of the labels of its edges (the corresponding substringsof the text) in any order.
     """
     trie = Trie(text)
     show_trie(trie.root)
@@ -73,5 +72,4 @@ def build_suffix_tree(text):
 
 if __name__ == '__main__':
     text = sys.stdin.readline().strip()
-    result = build_suffix_tree(text)
-    print("\n".join(result))
+    build_suffix_tree(text)
