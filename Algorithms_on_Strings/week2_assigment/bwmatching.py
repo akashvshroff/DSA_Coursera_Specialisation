@@ -1,43 +1,63 @@
 # python3
-import sys
+
+def preprocess_bwt(bwt, symbols=['$', 'A', 'C', 'G', 'T']):
+    """
+    Preprocess the BWT string to generate 2 arrays:
+    1. The first is a dict of lists where the keys are
+    all the symbols in the hashmap and the value is a list of ints
+    where each integer in the list refers to the number of occurences
+    of the symbol so far.
+    2. The second is a hash_map first occurence which
+    maps each symbol to the index it occurs first in the
+    sorted list of symbols for the BWT.
+    """
+    n = len(bwt)
+    bwt_sorted = sorted(bwt)
+    c = {ch: 0 for ch in symbols}
+    count = {ch: [0 for _ in range(n+1)] for ch in symbols}
+    for i in range(n):
+        c[bwt[i]] += 1
+        for ch in symbols:
+            count[ch][i+1] = c[ch]
+    first = {}
+    for id, ch in enumerate(bwt_sorted):
+        if first.get(ch, None) is None:
+            first[ch] = id
+    return count, first
 
 
-def PreprocessBWT(bwt):
-  """
-  Preprocess the Burrows-Wheeler Transform bwt of some text
-  and compute as a result:
-    * starts - for each character C in bwt, starts[C] is the first position 
-        of this character in the sorted array of 
-        all characters of the text.
-    * occ_count_before - for each character C in bwt and each position P in bwt,
-        occ_count_before[C][P] is the number of occurrences of character C in bwt
-        from position 0 to position P inclusive.
-  """
-  # Implement this function yourself
-  pass
+def bwt_matching(bwt, pattern, count, first):
+    """
+    Use the Burrows-Wheeler transform to return the number of 
+    exact matches of any pattern in a text.
+    """
+    top = 0
+    bottom = len(bwt) - 1
+    while top <= bottom:
+        if pattern:
+            symbol = pattern.pop()
+            if symbol in bwt[top:bottom + 1]:
+                top = first[symbol] + count[symbol][top]
+                bottom = first[symbol] + count[symbol][bottom + 1] - 1
+            else:
+                return 0
+        else:
+            return bottom - top + 1
 
 
-def CountOccurrences(pattern, bwt, starts, occ_counts_before):
-  """
-  Compute the number of occurrences of string pattern in the text
-  given only Burrows-Wheeler Transform bwt of the text and additional
-  information we get from the preprocessing stage - starts and occ_counts_before.
-  """
-  # Implement this function yourself
-  return 0
-     
+def main(bwt, patterns):
+    """
+    Driver function that preprocesses the BWT and calls upon the bwt_matching fn.
+    """
+    count, first = preprocess_bwt(bwt)
+    res = []
+    for pattern in patterns:
+        res.append(str(bwt_matching(bwt, list(pattern), count, first)))
+    print(' '.join(res))
 
 
 if __name__ == '__main__':
-  bwt = sys.stdin.readline().strip()
-  pattern_count = int(sys.stdin.readline().strip())
-  patterns = sys.stdin.readline().strip().split()
-  # Preprocess the BWT once to get starts and occ_count_before.
-  # For each pattern, we will then use these precomputed values and
-  # spend only O(|pattern|) to find all occurrences of the pattern
-  # in the text instead of O(|pattern| + |text|).  
-  starts, occ_counts_before = PreprocessBWT(bwt)
-  occurrence_counts = []
-  for pattern in patterns:
-    occurrence_counts.append(CountOccurrences(pattern, bwt, starts, occ_counts_before))
-  print(' '.join(map(str, occurrence_counts)))
+    bwt = input()
+    n = int(input())
+    patterns = input().split()
+    main(bwt, patterns)
