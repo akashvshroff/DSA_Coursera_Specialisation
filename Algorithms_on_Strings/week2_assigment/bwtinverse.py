@@ -1,12 +1,11 @@
 # python3
-import sys
-
 
 def first_to_last(s):
     """
-    For a BWT, return an array which marks the occurence number
-    for each symbol in the string s. Starts with -1 since
-    occurences are 0-based.
+    For a BWT, return the LF row which is a function mapping last col
+    to first col, since the position of the ith occurence of a symbol
+    in the last column is the same as the position of the ith occurence
+    of the symbol in the first col.
     """
     counts = {'$': 0, "A": 0, 'C': 0, 'G': 0, 'T': 0}
     for char in s:
@@ -30,15 +29,14 @@ def InverseBWT(bwt):
     property of the BWT.
     """
     f2l = first_to_last(bwt)
-    print(f2l)
     cur = 0
     s = '$'
     for _ in range(1, len(bwt)):
-        s = bwt[cur] + s
+        s += bwt[cur]
         cur = f2l[cur]
-    return s
+    return s[::-1]
 
 
 if __name__ == '__main__':
-    bwt = sys.stdin.readline().strip()
+    bwt = input()
     print(InverseBWT(bwt))
