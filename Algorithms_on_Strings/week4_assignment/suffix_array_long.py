@@ -8,6 +8,7 @@ def sort_chars(s, chars):
     n = len(s)
     order = [None] * n
     count = [0] * n
+    chars = [ch for ch in chars if ch in s]
     ch = {c: id for id, c in enumerate(chars)}
     for i in range(n):
         count[ch[s[i]]] += 1
