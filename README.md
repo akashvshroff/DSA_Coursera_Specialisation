@@ -111,3 +111,21 @@
     - [Bidirectional A* Algorithm](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Graphs/advanced_shortest_paths/bi_astar.py3)
 
 ---
+### 4. Algorithms On Graphs
+1. Suffix Trees:
+    - [Constructing a Trie](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Strings/week1_assignment/trie.py)
+    - [Implement TrieMatching](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Strings/week1_assignment/trie_matching.py)
+    - [Extend TrieMatching](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Strings/week1_assignment/trie_matching_extended.py)
+    - [Constructing The Suffix Tree](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Strings/week1_assignment/suffix_tree.py)
+    - [Shortest Non-Shared Substring](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Strings/week1_assignment/non_shared_substring.py)
+2. Burrows-Wheeler Transform and Suffix Arrays:
+    - [Construct the Burrows-Wheeler Transform](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Strings/week2_assignment/bwt.py)
+    - [Reconstruct the String from BWT (Inverse BWT)](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Strings/week2_assignment/bwtinverse.py)
+    - [Pattern Matching Using The BWT](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Strings/week2_assignment/bwmatching.py)
+    - [Construct The Suffix Array](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Strings/week2_assignment/suffix_array.py)
+4. Suffix Arrays and Suffix Trees:
+    - [Find All Occurences of a Pattern (Knuth-Morris-Pratt Algorithm)](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Strings/week4_assignment/kmp.py)
+    - [Construct Suffix Array of a Long String](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Strings/week4_assignment/suffix_array_long.py)
+    - [Pattern Matching with Suffix Array](https://github.com/akashvshroff/DSA_Coursera_Specialisation/blob/master/Algorithms_on_Strings/week4_assignment/suffix_array_matching.py)
+
+---
